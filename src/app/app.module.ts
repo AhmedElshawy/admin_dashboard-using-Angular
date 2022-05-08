@@ -21,6 +21,9 @@ import { PagerComponent } from './Shared/pager/pager.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FormsModule } from '@angular/forms';
 import { EditPhotoComponent } from './edit-photo/edit-photo.component';
+import { CatigoriesComponent } from './catigories/catigories.component';
+import { EditTypePhotoComponent } from './edit-type-photo/edit-type-photo.component';
+import { EditTypeComponent } from './edit-type/edit-type.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { EditPhotoComponent } from './edit-photo/edit-photo.component';
     ProductsComponent,
     EditProductComponent,
     PagerComponent,
-    EditPhotoComponent
+    EditPhotoComponent,
+    CatigoriesComponent,
+    EditTypePhotoComponent,
+    EditTypeComponent
   ]
   ,
   imports: [

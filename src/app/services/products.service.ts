@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IBrand } from '../models/IBrand';
 import { IPagnation } from '../models/IPagination';
-import { IProductType } from '../models/IProductType';
+import { IProductType, TypeFormValues } from '../models/IProductType';
 import { IProduct, ProductFormValues } from '../models/product';
 import { ShopParams } from '../models/ShopParams';
 
@@ -64,5 +64,25 @@ export class ProductsService {
   getProduct(id:string)
   {
     return this.http.get<IProduct>(this.baseUrl + `products/${id}`);
+  }
+
+  getType(id:string)
+  {
+    return this.http.get(this.baseUrl + `types/${id}`)
+  }
+
+  updateType(category:TypeFormValues, id:number)
+  {
+    return this.http.put(this.baseUrl + 'types/' + id, category);
+  }
+
+  createCategory(category:TypeFormValues)
+  {
+    return this.http.post(this.baseUrl + 'types', category);
+  }
+
+  deleteCategory(id: number) 
+  {
+    return this.http.delete(this.baseUrl + 'types/' + id);
   }
 }

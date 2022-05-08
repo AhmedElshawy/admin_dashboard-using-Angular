@@ -5,6 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditPhotoComponent } from './edit-photo/edit-photo.component';
+import { CatigoriesComponent } from './catigories/catigories.component';
+import { EditTypeComponent } from './edit-type/edit-type.component';
+import { EditTypePhotoComponent } from './edit-type-photo/edit-type-photo.component';
 
 
 const routes: Routes = [
@@ -14,13 +17,16 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'products/create', component: EditProductComponent },
   { path: 'products/edit/:id', component: EditProductComponent },
-  { path: 'products/photoUpload/:id', component: EditPhotoComponent }
+  { path: 'products/photoUpload/:id', component: EditPhotoComponent },
+  { path: 'catigories/photoUpload/:id', component: EditTypePhotoComponent },
+  { path: 'catigories', component: CatigoriesComponent },
+  { path: 'catigories/create', component: EditTypeComponent },
+  { path: 'catigories/edit/:id', component: EditTypeComponent }
 ];
 
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],
-
 exports: [RouterModule]
 })
 export class AppRoutingModule { }

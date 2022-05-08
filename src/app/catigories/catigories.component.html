@@ -1,0 +1,42 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <h2 class="text-muted mb-3">Catigories List</h2>
+                <button [routerLink]="['/catigories/create']" class="btn btn-outline-primary">Add new Catigoriy</button>
+              </div>
+            
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>category Img</th>
+                    <th>Name</th>                   
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of catigories">
+                    <td class="py-1">
+                      {{item.id}}
+                    </td>
+                    <td><img style="width: 50px; height: 50px;" src="{{item.pictureUrl}}" alt="{{item.name}}"></td>
+                    <td>                   
+                        {{item.name}}                
+                    </td> 
+                    <td><button  class="btn btn-outline-success" [routerLink]="['edit/', item.id]">Edit</button></td>
+                    <td><button  class="btn btn-outline-danger" (click)="onDelete(item.id)">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
