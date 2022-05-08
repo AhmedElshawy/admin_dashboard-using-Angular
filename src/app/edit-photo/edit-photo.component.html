@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="mb-3">
+      <label for="photo" class="form-label">Upload photo</label>
+      <input type="file" class="form-control" id="photo" (change)="onPhotoSelected($event)">
+    </div>
+    <button (click)="uploadPhoto()" class="btn btn-primary">Upload</button>
+</div>

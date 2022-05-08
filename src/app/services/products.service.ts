@@ -22,7 +22,6 @@ export class ProductsService {
   }
 
   updateProduct(product: ProductFormValues, id: number) {
-    console.log(product);
     return this.http.put(this.baseUrl + 'products/' + id, product);
   }
 

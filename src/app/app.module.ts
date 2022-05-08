@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PagerComponent } from './Shared/pager/pager.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FormsModule } from '@angular/forms';
+import { EditPhotoComponent } from './edit-photo/edit-photo.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     SidenavComponent,
     ProductsComponent,
     EditProductComponent,
-    PagerComponent
+    PagerComponent,
+    EditPhotoComponent
   ]
   ,
   imports: [
