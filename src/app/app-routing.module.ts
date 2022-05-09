@@ -6,19 +6,11 @@ import { BaseComponent } from './layout/base/base.component';
 
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
-  // { path: 'home', component: HomeComponent },
-  // { path: 'dashboard', component: DashboardComponent },
-  // { path: 'products', component: ProductsComponent },
-  // { path: 'products/create', component: EditProductComponent },
-  // { path: 'products/edit/:id', component: EditProductComponent },
-  // { path: 'products/photoUpload/:id', component: EditPhotoComponent },
-  // { path: 'catigories/photoUpload/:id', component: EditTypePhotoComponent },
-  // { path: 'catigories', component: CatigoriesComponent },
-  // { path: 'catigories/create', component: EditTypeComponent },
-  // { path: 'catigories/edit/:id', component: EditTypeComponent }
+  {path:'account' , loadChildren:()=> import('./account/account.module')
+    .then(mod=>mod.AccountModule) },
 
-  { path: '', component:BaseComponent ,children:[
+  { path: '', component:BaseComponent ,
+  children:[
     { path: 'home', component: HomeComponent },
     { path: 'dashboard', component: DashboardComponent },
     {path:'products' , loadChildren:()=> import('./product/product.module')
