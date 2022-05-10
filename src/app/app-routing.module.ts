@@ -20,6 +20,8 @@ const routes: Routes = [
     .then(mod=>mod.ProductModule) },
     {path:'catigories' , loadChildren:()=> import('./category/category.module')
     .then(mod=>mod.CategoryModule) },
+    {path:'brands' , loadChildren:()=> import('./brand/brand.module')
+    .then(mod=>mod.BrandModule) },
   ]
 }
 ];
