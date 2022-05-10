@@ -25,4 +25,9 @@ export class HeaderComponent implements OnInit {
     this.toggleSidebarForMe.emit();
   }
 
+  logout()
+  {
+    this.accountService.logOut();
+  }
+
 }
