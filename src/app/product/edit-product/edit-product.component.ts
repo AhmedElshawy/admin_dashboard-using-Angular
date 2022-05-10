@@ -68,13 +68,13 @@ export class EditProductComponent implements OnInit {
   onSubmit(product: ProductFormValues) {
     if (this.route.snapshot.url[0].path === 'edit') {
       const updatedProduct = {...this.product, ...product, price: +product.price};
-      this.productsService.updateProduct(updatedProduct, parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe((response: any) => {
-        this.router.navigate([`products/photoUpload/${product.id}`]);
+      this.productsService.updateProduct(updatedProduct, parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe((response:any) => {       
+        this.router.navigate([`products/photoUpload/${response.id}`]);
       });
     } else {
       const newProduct = {...product, price: product.price};
       this.productsService.createProduct(newProduct).subscribe((response: any) => {
-        this.router.navigate([`products/photoUpload/${product.id}`]);
+        this.router.navigate([`products/photoUpload/${response.id}`]);
       });
     }
   }

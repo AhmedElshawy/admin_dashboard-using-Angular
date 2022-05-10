@@ -12,9 +12,9 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
+    state: RouterStateSnapshot): Observable<boolean> {   
       return this.accountService.currentUser$.pipe(
-        map((user,index)=>{
+        map((user)=>{       
           if(user){
             return true
           }       

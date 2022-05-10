@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   onSubmit(ev:any)
   {
     ev.preventDefault();
-    console.log(this.loginForm.value);
     this.accountService.logIn(this.loginForm.value).subscribe(()=>{
       console.log("logged in successfully");
       this.router.navigateByUrl('/');

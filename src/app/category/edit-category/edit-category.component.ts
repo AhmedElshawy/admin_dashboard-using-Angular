@@ -34,12 +34,12 @@ export class EditCategoryComponent implements OnInit {
     if (this.route.snapshot.url[0].path === 'edit') {
       const updatedType = {...this.category, ...category};
       this.productsService.updateType(updatedType, parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe((response: any) => {
-        this.router.navigate([`catigories/photoUpload/${category.id}`]);
+        this.router.navigate([`catigories/photoUpload/${response.id}`]);
       });
     } else {
       const newType = {...category};
       this.productsService.createCategory(newType).subscribe((response: any) => {
-        this.router.navigate([`catigories/photoUpload/${category.id}`]);
+        this.router.navigate([`catigories/photoUpload/${response.id}`]);
       });
     }
   }

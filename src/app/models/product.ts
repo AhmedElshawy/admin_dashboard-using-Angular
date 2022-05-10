@@ -9,7 +9,6 @@ export interface IProduct {
 }
 
 export interface IProductToCreate {
-    id: number;
     name: string;
     description: string;
     price: number;
@@ -19,7 +18,6 @@ export interface IProductToCreate {
 }
 
 export class ProductFormValues implements IProductToCreate {
-    id = 0;
     name = '';
     description = '';
     price = 0;
