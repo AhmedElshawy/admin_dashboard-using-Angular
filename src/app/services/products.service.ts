@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,15 +18,15 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   createProduct(product: ProductFormValues) {
-    return this.http.post(this.baseUrl + 'products', product);
+    return this.http.post(this.baseUrl + 'products', product,{headers:this.getHeaders()});
   }
 
   updateProduct(product: ProductFormValues, id: number) {
-    return this.http.put(this.baseUrl + 'products/' + id, product);
+    return this.http.put(this.baseUrl + 'products/' + id, product,{headers:this.getHeaders()});
   }
 
   deleteProduct(id: number) {
-    return this.http.delete(this.baseUrl + 'products/' + id);
+    return this.http.delete(this.baseUrl + 'products/' + id,{headers:this.getHeaders()});
   }
 
   getProducts(shopParams:ShopParams)
@@ -63,26 +63,34 @@ export class ProductsService {
 
   getProduct(id:string)
   {
-    return this.http.get<IProduct>(this.baseUrl + `products/${id}`);
+    return this.http.get<IProduct>(this.baseUrl + `products/${id}`,{headers:this.getHeaders()});
   }
 
   getType(id:string)
   {
-    return this.http.get(this.baseUrl + `types/${id}`)
+    return this.http.get(this.baseUrl + `types/${id}`,{headers:this.getHeaders()});
   }
 
   updateType(category:TypeFormValues, id:number)
   {
-    return this.http.put(this.baseUrl + 'types/' + id, category);
+    return this.http.put(this.baseUrl + 'types/' + id, category,{headers:this.getHeaders()});
   }
 
   createCategory(category:TypeFormValues)
   {
-    return this.http.post(this.baseUrl + 'types', category);
+    return this.http.post(this.baseUrl + 'types', category ,{headers:this.getHeaders()});
   }
 
   deleteCategory(id: number) 
   {
-    return this.http.delete(this.baseUrl + 'types/' + id);
+    return this.http.delete(this.baseUrl + 'types/' + id,{headers:this.getHeaders()});
+  }
+
+  private getHeaders():HttpHeaders
+  {
+    const token=localStorage.getItem('token');
+    let headers=new HttpHeaders();
+    headers=headers.set('Authorization',`Bearer ${token}`);
+    return headers;
   }
 }

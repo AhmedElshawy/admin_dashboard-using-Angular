@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -30,7 +30,10 @@ export class EditCategoryPicComponent implements OnInit {
   uploadPhoto(){
     const fd = new FormData();
     fd.append('typeImg',this.selectedPhoto, this.selectedPhoto.name);
-    this.http.put(`https://localhost:7213/api/types/photoTypeEdit/${this.TypeId}`,fd).subscribe(res=>{
+    const token=localStorage.getItem('token');
+    let headers=new HttpHeaders();
+    headers=headers.set('Authorization',`Bearer ${token}`);
+    this.http.put(`https://localhost:7213/api/types/photoTypeEdit/${this.TypeId}`,fd,{headers}).subscribe(res=>{
       this.router.navigate([`catigories`]);
     });
   }

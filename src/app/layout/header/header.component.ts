@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser$ = this.accountService.currentUser$
-    console.log(this.currentUser$);
   }
 
   toggleSidebar() {
