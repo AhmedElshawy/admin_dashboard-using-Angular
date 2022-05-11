@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-lg-8">
           <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm.valid && categoryForm.value)">
-            <div class="form-row">
+            <div class="row">
               <div class="form-group col-md-6">
                 <label for="name">Type Name</label>
                 <input
@@ -23,29 +23,8 @@
                   </div>
                 </div>
               </div>
-
-
-              <!-- <div class="form-group col-md-6">
-                <label for="id">Type ID</label>
-                <input
-                  [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}"
-                  required
-                  type="text"
-                  class="form-control"
-                  id="id"
-                  placeholder="Type Id"
-                  name="id"
-                  #TypeId="ngModel"
-                  [(ngModel)]="category.id"
-                >
-                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
-                  <div *ngIf="name.errors!['required']">
-                    Type id is required
-                  </div>
-                </div>
-              </div> -->
             </div>
-            <button [disabled]="!categoryForm.valid" type="submit" class="btn btn-primary my-3 float-right">Submit</button>
+            <button [disabled]="!categoryForm.valid" type="submit" class="btn btn-primary my-3 float-right">Next</button>
           </form>
         </div>
       </div>

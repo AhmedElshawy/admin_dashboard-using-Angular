@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
-import { BaseComponent } from './layout/base/base.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { BaseComponent } from './layout/base/base.component';
 
 const routes: Routes = [
   {
