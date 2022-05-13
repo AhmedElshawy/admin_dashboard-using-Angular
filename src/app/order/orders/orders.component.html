@@ -24,13 +24,15 @@
                       {{item.id}}
                     </td>
                     <td>
-                        {{item.orderDate}}
+                        {{item.orderDate | date}}
                     </td>
                     <td>                   
                         {{item.buyerEmail}}                
                     </td> 
-                    <td>
-                        {{item.status}}
+                    <td>                     
+                      <p class="badge rounded-pill bg-info">
+                        {{item.status}} 
+                      </p>                                                                                           
                     </td>
                     <td>
                         <button [routerLink]="['invoice/', item.id]" class="btn btn-outline-success">view invoice</button>

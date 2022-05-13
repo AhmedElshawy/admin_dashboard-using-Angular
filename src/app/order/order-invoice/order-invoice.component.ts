@@ -3,6 +3,7 @@ import { OrderService } from './../order.service';
 import { IAddress, IOrder, IOrderItems } from './../../models/order';
 import { ActivatedRoute } from '@angular/router';
 declare const html2pdf : any;
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order-invoice',
@@ -16,7 +17,9 @@ export class OrderInvoiceComponent implements OnInit {
   shippingAddress?:IAddress;
   orderItems?:IOrderItems[];
   dueOrderDate?: Date;
-  constructor(private orderService:OrderService , private router:ActivatedRoute) {
+  constructor(private orderService:OrderService
+     , private router:ActivatedRoute,
+     private toasterService:ToastrService) {
    }
 
   ngOnInit(): void {
@@ -52,6 +55,14 @@ export class OrderInvoiceComponent implements OnInit {
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
     html2pdf(pdf_content, options);
+  }
+
+  acceptOrder()
+  {
+    let id = parseInt( this.router.snapshot.paramMap.get('id')!);
+    this.orderService.acceptOrder(id).subscribe(data=>{
+      this.toasterService.success("Order accepted successfuly");
+    });
   }
 
 }

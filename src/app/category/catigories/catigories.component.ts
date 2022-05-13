@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProductType } from 'src/app/models/IProductType';
 import { ProductsService } from 'src/app/services/products.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-catigories',
@@ -10,7 +11,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class CatigoriesComponent implements OnInit {
 
   catigories:IProductType[];
-  constructor(private productsService:ProductsService) {
+  constructor(private productsService:ProductsService,private toasterSerivce:ToastrService) {
     this.catigories = [];
   }
 
@@ -26,9 +27,13 @@ export class CatigoriesComponent implements OnInit {
 
   onDelete(id:number)
   {
-    this.productsService.deleteCategory(id).subscribe(data=>{
-      this.catigories.splice(this.catigories.findIndex(p => p.id === id), 1);    
-    });
+    if(window.confirm("Are you sure you want to delete this item ??")){
+      this.productsService.deleteCategory(id).subscribe(data=>{
+        this.toasterSerivce.success("Deleted successfully")
+        this.catigories.splice(this.catigories.findIndex(p => p.id === id), 1);    
+      });
+    }
+   
   }
 
 }

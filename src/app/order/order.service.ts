@@ -22,6 +22,11 @@ export class OrderService {
     return this.http.get<IOrder>(this.baseUrl + `Order/${id}`,{headers:this.getHeaders()});
   }
 
+  acceptOrder(id:number)
+  {
+    return this.http.put(this.baseUrl+`Order/${id}`,null,{headers:this.getHeaders()});
+  }
+
   private getHeaders():HttpHeaders
   {
     const token=localStorage.getItem('token');

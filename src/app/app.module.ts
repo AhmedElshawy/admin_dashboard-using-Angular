@@ -11,6 +11,7 @@ import { ErrorInterceptor } from './intercepors/error.interceptor';
 import { LoadingInterceptor } from './intercepors/loading.interceptors';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     NgxSpinnerModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS , useClass: ErrorInterceptor , multi:true},

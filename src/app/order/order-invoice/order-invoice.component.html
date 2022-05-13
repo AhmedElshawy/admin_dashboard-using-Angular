@@ -28,8 +28,7 @@
             <div class="col-lg-3 pe-0">
               <h4 class="fw-bold text-uppercase text-end mt-4 mb-2">invoice</h4>
               <h6 class="text-end mb-5 pb-4"># INV-002308</h6>
-              <p class="text-end mb-1">Balance Due</p>
-              <h4 class="text-end fw-normal">$ 72,420.00</h4>
+              <br>            
               <h6 class="mb-0 mt-3 text-end fw-normal mb-2">
                 <span class="text-muted">Invoice Date :</span>
                 {{ this.order?.orderDate | date }}
@@ -96,6 +95,6 @@
   </div>
 </div>
 <div class="pb-5 pt-3 px-3 float-end">
-  <a class="btn btn-primary mx-2">Accept Order</a>
+  <button (click)="this.acceptOrder()" class="btn btn-primary mx-2">Accept Order</button>
   <a (click)="this.getInvoice()" class="btn btn-outline-primary">Download PDF</a>
 </div>
