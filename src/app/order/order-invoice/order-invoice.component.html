@@ -1,0 +1,101 @@
+<div #invoice class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="container-fluid d-flex justify-content-between">
+            <div class="col-lg-3 ps-0">
+              <a routerLink="." class="nobleui-logo d-block mt-3"
+                >Amazon<span>Service</span></a
+              >
+              <p class="mt-1 mb-1"><b>From</b></p>
+              <p>
+                108,<br />
+                Ahmed Maher St,<br />Cairo, WC1B 3NA.
+              </p>
+              <h5 class="mt-5 mb-2 text-muted">Invoice to :</h5>
+              <p>
+                {{ this.shippingAddress?.fristName }}
+                {{ this.shippingAddress?.lastName }}<br />
+                {{ this.shippingAddress?.zipCode }},{{
+                  this.shippingAddress?.street
+                }}
+                St<br />
+                {{ this.shippingAddress?.city }},
+                {{ this.shippingAddress?.state }}.
+              </p>
+            </div>
+            <div class="col-lg-3 pe-0">
+              <h4 class="fw-bold text-uppercase text-end mt-4 mb-2">invoice</h4>
+              <h6 class="text-end mb-5 pb-4"># INV-002308</h6>
+              <p class="text-end mb-1">Balance Due</p>
+              <h4 class="text-end fw-normal">$ 72,420.00</h4>
+              <h6 class="mb-0 mt-3 text-end fw-normal mb-2">
+                <span class="text-muted">Invoice Date :</span>
+                {{ this.order?.orderDate | date }}
+              </h6>
+              <h6 class="text-end fw-normal">
+                <span class="text-muted">Due Date :</span>
+                {{ this.dueOrderDate | date }}
+              </h6>
+            </div>
+          </div>
+          <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+            <div class="table-responsive w-100">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Unit cost</th>
+                    <th class="text-center">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center" *ngFor="let item of this.orderItems;">
+                    <td class="text-start">{{item.productName}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.price | currency}}</td>
+                    <td>{{this.order?.total}}</td>
+                  </tr>                               
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="container-fluid mt-5 w-100">
+            <div class="row">
+              <div class="col-md-6 ms-auto">
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>number of items</td>
+                        <td class="text-danger text-end">{{this.orderItems?.length}}</td>
+                      </tr>                                                       
+                      <tr>
+                        <td>Payment Made</td>
+                        <td class="text-danger text-end">On Delivery</td>
+                      </tr>
+                      <tr>
+                        <td>Sub Total</td>
+                        <td class="text-end">{{this.order?.subtotal | currency}}</td>
+                      </tr>  
+                      <tr>
+                        <td class="text-bold-800">Total</td>
+                        <td class="text-bold-800 text-end">{{this.order?.total | currency}}</td>
+                      </tr>                    
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pb-5 pt-3 px-3 float-end">
+  <a class="btn btn-primary mx-2">Accept Order</a>
+  <a (click)="this.getInvoice()" class="btn btn-outline-primary">Download PDF</a>
+</div>

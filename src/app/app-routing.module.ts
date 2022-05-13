@@ -48,7 +48,12 @@ const routes: Routes = [
         loadChildren: () =>
           import('./brand/brand.module').then((mod) => mod.BrandModule),
       },
-      { path: '**', redirectTo: '', pathMatch: 'full' },
+      {
+        path: 'orders',
+        loadChildren: () =>
+          import('./order/order.module').then((mod) => mod.OrderModule),
+      },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
 ];

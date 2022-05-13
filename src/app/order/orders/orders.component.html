@@ -1,0 +1,49 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <h2 class="text-muted mb-3">Orders List</h2>
+              </div>
+            
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Order date</th>
+                    <th>Customer E-mail</th>                   
+                    <th>Status</th>
+                    <th>Invoice</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of orders">
+                    <td class="py-1">
+                      {{item.id}}
+                    </td>
+                    <td>
+                        {{item.orderDate}}
+                    </td>
+                    <td>                   
+                        {{item.buyerEmail}}                
+                    </td> 
+                    <td>
+                        {{item.status}}
+                    </td>
+                    <td>
+                        <button [routerLink]="['invoice/', item.id]" class="btn btn-outline-success">view invoice</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
