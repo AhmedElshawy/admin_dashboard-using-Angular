@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h2>Welcom to dashboared</h2>
+    </div>
+    <div class="col-xl-12 grid-margin stretch-card mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Orders per day</h4>
+          <apx-chart
+            [series]="barChartOptions.series"
+            [chart]="barChartOptions.chart"
+            [colors]="barChartOptions.colors"
+            [grid]="barChartOptions.grid"
+            [xaxis]="barChartOptions.xaxis"
+            [yaxis]="barChartOptions.yaxis"
+            [plotOptions]="barChartOptions.plotOptions"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-xl-6 stretch-card" style="height: 450px">
+      <div class="card h-100" style="overflow-y: auto">
+        <div
+          class="card-body bg-light d-flex justify-content-center align-items-center"
+          *ngIf="pendingOrders.length == 0"
+        >
+          <div>
+            <h2 class="mt-5 text-muted">There are no pending orders !</h2>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="pendingOrders.length > 0">
+          <div class="d-flex justify-content-between align-items-baseline mb-2">
+            <h6 class="card-title mb-0">Pendding orders</h6>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th class="pt-0">Order Id</th>
+                  <th class="pt-0">Customer E-mail</th>
+                  <th class="pt-0">Order date</th>
+                  <th class="pt-0">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of this.pendingOrders">
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.buyerEmail }}</td>
+                  <td>{{ item.orderDate | date }}</td>
+                  <td>
+                    <p class="badge rounded-pill bg-danger">
+                      {{ item.status }}
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 grid-margin stretch-card mb-5">
+      <div class="card" style="height: 450px">
+        <div class="card-body">
+          <h4 class="card-title">Customers Statistics</h4>
+          <apx-chart
+            [series]="lineChartOptions.series"
+            [chart]="lineChartOptions.chart"
+            [colors]="lineChartOptions.colors"
+            [grid]="lineChartOptions.grid"
+            [xaxis]="lineChartOptions.xaxis"
+            [yaxis]="lineChartOptions.yaxis"
+            [markers]="lineChartOptions.markers"
+            [legend]="lineChartOptions.legend"
+            [stroke]="lineChartOptions.stroke"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

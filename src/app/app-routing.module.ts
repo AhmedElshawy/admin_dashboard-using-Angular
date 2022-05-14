@@ -53,6 +53,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./order/order.module').then((mod) => mod.OrderModule),
       },
+      {
+        path: 'dashbored',
+        loadChildren: () =>
+          import('./dashbored/dashbored.module').then((mod) => mod.DashboredModule),
+      },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

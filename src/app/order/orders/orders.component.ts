@@ -22,7 +22,8 @@ export class OrdersComponent implements OnInit {
   {
     this.orderService.getOrders().subscribe(data=>{
       this.orders = data;
-      console.log(data[0].status.toString() == 'Accepted')
+      console.log(data[0].status.toString() == ' Accepted')
+      console.log(data[5].status.toString())
     });
   }
 
