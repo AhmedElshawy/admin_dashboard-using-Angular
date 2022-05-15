@@ -38,8 +38,8 @@
             ],
             "scripts": [
               "./node_modules/html2pdf.js/dist/html2pdf.bundle.min.js",
-              "node_modules/apexcharts/dist/apexcharts.min.js"
-             ]
+              "node_modules/apexcharts/dist/apexcharts.min.js"          
+            ]
           },
           "configurations": {
             "production": {

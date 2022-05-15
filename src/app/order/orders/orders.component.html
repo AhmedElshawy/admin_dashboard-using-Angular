@@ -2,12 +2,14 @@
   <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" style="min-height: 80vh;">
           <div class="d-flex justify-content-between mb-3">
             <h2 class="text-muted mb-3">Orders List</h2>
           </div>
-
-          <div class="table-responsive">
+          <div *ngIf="this.orders.length === 0" class="col-12" style="color: black;">
+            <h2>there are no new orders!</h2>
+          </div>
+          <div *ngIf="this.orders.length > 0" class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -31,10 +33,10 @@
                   </td>
                   <td>
                     <p
-                    [class.bg-success]="item.status.toString() == ' Accepted'"
-                    [class.bg-warning]="item.status.toString() == 'Pending'"  
-                    class="badge rounded-pill"
-                     >
+                      [class.bg-success]="item.status.toString() == ' Accepted'"
+                      [class.bg-warning]="item.status.toString() == 'Pending'"
+                      class="badge rounded-pill"
+                    >
                       {{ item.status }}
                     </p>
                   </td>

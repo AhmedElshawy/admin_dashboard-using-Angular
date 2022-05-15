@@ -12,7 +12,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
   imports: [
     CommonModule,
     DashboredRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
   ]
 })
 export class DashboredModule { }
