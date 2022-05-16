@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DashboredService } from './../dashbored.service';
 import { ICustomerStat, IOrderStat } from './../../models/stat';
 import { OrderService } from './../../order/order.service';
 import { IOrder } from 'src/app/models/order';
 import { IBrandsStat } from './../../models/brandStat';
 declare const Chart: any;
+declare const html2pdf : any;
 
 @Component({
   selector: 'app-dashbored',
@@ -12,6 +13,8 @@ declare const Chart: any;
   styleUrls: ['./dashbored.component.scss'],
 })
 export class DashboredComponent implements OnInit {
+  @ViewChild('report') report?:ElementRef;
+  
   // order stat data
   orderStat: IOrderStat[];
   numberOfOrdersArray: number[];
@@ -117,6 +120,19 @@ export class DashboredComponent implements OnInit {
       });
       this.barChartOptions = this.getBarChartOptions(this.obj);
     });
+  }
+
+  generateReport()
+  {
+    let pdf_content = this.report?.nativeElement;
+    let options = {
+      margin:       1,
+      filename:     'Report.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
+    };
+    html2pdf(pdf_content, options);
   }
 
   /**

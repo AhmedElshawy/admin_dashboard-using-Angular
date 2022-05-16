@@ -1,9 +1,10 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <h2>Welcom to dashboared</h2>
-    </div>
-    <div class="col-xl-12 grid-margin stretch-card mb-5">
+  <div class="d-flex justify-content-between mt-3 mb-4">
+    <h2>Welcom to our dashboared</h2>
+    <button (click)="generateReport()" class="btn btn-outline-primary">Generate Report</button>
+  </div>
+  <div #report class="row">
+    <div class="col-xl-12 grid-margin stretch-card mb-5 html2pdf__page-break">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Orders per day</h4>
@@ -20,7 +21,7 @@
       </div>
     </div>
 
-    <div class="col-xl-12 grid-margin stretch-card mb-5">
+    <div class="col-xl-12 grid-margin stretch-card mb-5 html2pdf__page-break">
       <div class="card" style="height: 450px">
         <div class="card-body">
           <h4 class="card-title">Customers Statistics</h4>
@@ -90,6 +91,5 @@
         </div>
       </div>
     </div>
-    
   </div>
 </div>
